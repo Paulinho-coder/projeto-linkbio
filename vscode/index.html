@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevLinks</title>
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <div id="container">
+      <!-- Perfil -->
+      <div id="profile">
+        <img
+          id="avatar"
+          src="./assets/Avatar.png"
+          alt="Foto de perfil de CodePaulinho"
+        />
+        <p>@codepaulinho</p>
+      </div>
+
+      <!-- Botão de troca de tema -->
+      <div id="switch" onclick="toggleMode()">
+        <span>
+          <img id="icon" src="./assets/moon-stars.svg" alt="Ícone de tema" />
+        </span>
+      </div>
+
+      <!-- Links principais -->
+      <ul>
+        <li>
+          <a
+            href="https://www.linkedin.com/in/paulo-filho-96262934b/"
+            target="_blank"
+          >
+            Conecte-se comigo no LinkedIn
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.tiktok.com/@paulin05__?_t=ZM-8x9VsmRnHia&_r=1"
+            target="_blank"
+          >
+            Me siga no TikTok
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/Paulinho-coder" target="_blank">
+            Confira meu portfólio
+          </a>
+        </li>
+        <li>
+          <a href="https://roadmap.sh/full-stack" target="_blank">
+            Baixe meu roadmap
+          </a>
+        </li>
+      </ul>
+
+      <!-- Links sociais com ícones -->
+      <div id="social-links">
+        <a href="https://github.com/Paulinho-coder" target="_blank">
+          <ion-icon name="logo-github"></ion-icon>
+        </a>
+        <a href="https://www.instagram.com/pcthecodeer/" target="_blank">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/paulo-filho-96262934b/"
+          target="_blank"
+        >
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a>
+        <a href="https://tiktok.com/@paulin05__" target="_blank">
+          <ion-icon name="logo-tiktok"></ion-icon>
+        </a>
+      </div>
+
+      <!-- Rodapé -->
+      <footer>
+        Feito com ♥ por
+        <a href="https://www.instagram.com/bionixpages/">Bionixpages</a>
+      </footer>
+    </div>
+
+    <!-- Ionicons -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <!-- Script de troca de tema com imagem -->
+    <script>
+      const html = document.documentElement
+      const icon = document.getElementById('icon')
+      const avatar = document.getElementById('avatar')
+
+      // Aplica tema salvo e define ícones + imagem
+      window.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme')
+        const isLight = savedTheme === 'light'
+
+        html.classList.toggle('light', isLight)
+        icon.src = isLight ? './assets/sun.svg' : './assets/moon-stars.svg'
+        avatar.src = isLight
+          ? './assets/avatar-light.png'
+          : './assets/Avatar.png'
+      })
+
+      function toggleMode() {
+        html.classList.toggle('light')
+        const isLight = html.classList.contains('light')
+
+        localStorage.setItem('theme', isLight ? 'light' : 'dark')
+        icon.src = isLight ? './assets/sun.svg' : './assets/moon-stars.svg'
+        avatar.src = isLight
+          ? './assets/avatar-light.png'
+          : './assets/Avatar.png'
+      }
+    </script>
+  </body>
+</html>
