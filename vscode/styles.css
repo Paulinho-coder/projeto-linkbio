@@ -40,7 +40,8 @@ body * {
 
 /* CONTAINER */
 #container {
-  width: 360px;
+  width: 100%;
+  max-width: 588px;
   margin: 56px auto 0px;
   padding: 0 24px;
 }
@@ -66,6 +67,36 @@ body * {
   display: flex;
   justify-content: center;
   margin: 4px auto;
+  position: relative;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  transform: translateY(-50%);
+  cursor: pointer;
+
+  animation: slide-back 0.2s;
+}
+
+#switch button {
+  outline: 8px solid var(--higlight-color);
+}
+
+#switch span {
+  justify-content: flex-start;
+  transition: justify-content 0.3s ease;
+}
+
+.light #switch span {
+  justify-content: flex-end;
 }
 
 #switch span {
@@ -81,10 +112,6 @@ body * {
   justify-content: flex-start;
   padding: 0 4px;
   transition: justify-content 0.3s ease;
-}
-
-.light #switch span {
-  justify-content: flex-end;
 }
 
 #switch img {
@@ -124,6 +151,11 @@ ul li a:hover {
   border: 1.5px solid white;
 }
 
+ul li a:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
 /* SOCIAL LINKS */
 #social-links {
   display: flex;
@@ -145,6 +177,11 @@ ul li a:hover {
   background: var(--higlight-color);
 }
 
+#social-links a:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
 /* FOOTER */
 footer {
   margin-top: 24px;
@@ -161,4 +198,27 @@ footer a {
 
 footer a:hover {
   color: #ffffff;
+}
+
+footer a:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* ANIMATION */
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
 }

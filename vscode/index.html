@@ -18,19 +18,26 @@
   </head>
 
   <body>
-    <div id="container">
+    <main id="container">
       <!-- Perfil -->
-      <div id="profile">
+      <section id="profile">
         <img
           id="avatar"
           src="./assets/Avatar.png"
           alt="Foto de perfil de CodePaulinho"
         />
         <p>@codepaulinho</p>
-      </div>
+      </section>
 
       <!-- Botão de troca de tema -->
-      <div id="switch" onclick="toggleMode()">
+      <div
+        id="switch"
+        role="button"
+        aria-label="Alternar tema"
+        tabindex="0"
+        onclick="toggleMode()"
+        onkeydown="handleKey(event)"
+      >
         <span>
           <img id="icon" src="./assets/moon-stars.svg" alt="Ícone de tema" />
         </span>
@@ -42,6 +49,7 @@
           <a
             href="https://www.linkedin.com/in/paulo-filho-96262934b/"
             target="_blank"
+            rel="noopener noreferrer"
           >
             Conecte-se comigo no LinkedIn
           </a>
@@ -50,47 +58,73 @@
           <a
             href="https://www.tiktok.com/@paulin05__?_t=ZM-8x9VsmRnHia&_r=1"
             target="_blank"
+            rel="noopener noreferrer"
           >
             Me siga no TikTok
           </a>
         </li>
         <li>
-          <a href="https://github.com/Paulinho-coder" target="_blank">
+          <a
+            href="https://github.com/Paulinho-coder"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Confira meu portfólio
           </a>
         </li>
         <li>
-          <a href="https://roadmap.sh/full-stack" target="_blank">
+          <a
+            href="https://roadmap.sh/full-stack"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Baixe meu roadmap
           </a>
         </li>
       </ul>
 
       <!-- Links sociais com ícones -->
-      <div id="social-links">
-        <a href="https://github.com/Paulinho-coder" target="_blank">
+      <nav id="social-links" aria-label="Redes sociais">
+        <a
+          href="https://github.com/Paulinho-coder"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+        >
           <ion-icon name="logo-github"></ion-icon>
         </a>
-        <a href="https://www.instagram.com/pcthecodeer/" target="_blank">
+        <a
+          href="https://www.instagram.com/pcthecodeer/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+        >
           <ion-icon name="logo-instagram"></ion-icon>
         </a>
         <a
           href="https://www.linkedin.com/in/paulo-filho-96262934b/"
           target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
         >
           <ion-icon name="logo-linkedin"></ion-icon>
         </a>
-        <a href="https://tiktok.com/@paulin05__" target="_blank">
+        <a
+          href="https://tiktok.com/@paulin05__"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="TikTok"
+        >
           <ion-icon name="logo-tiktok"></ion-icon>
         </a>
-      </div>
+      </nav>
 
       <!-- Rodapé -->
       <footer>
         Feito com ♥ por
         <a href="https://www.instagram.com/bionixpages/">Bionixpages</a>
       </footer>
-    </div>
+    </main>
 
     <!-- Ionicons -->
     <script
@@ -108,7 +142,7 @@
       const icon = document.getElementById('icon')
       const avatar = document.getElementById('avatar')
 
-      // Aplica tema salvo e define ícones + imagem
+      // Aplica tema salvo ao carregar
       window.addEventListener('DOMContentLoaded', () => {
         const savedTheme = localStorage.getItem('theme')
         const isLight = savedTheme === 'light'
@@ -129,6 +163,13 @@
         avatar.src = isLight
           ? './assets/avatar-light.png'
           : './assets/Avatar.png'
+      }
+
+      function handleKey(event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault()
+          toggleMode()
+        }
       }
     </script>
   </body>
